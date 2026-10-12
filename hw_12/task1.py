@@ -29,7 +29,7 @@ class Product:
     def __str__(self) -> str:
         return f'{self.__name}, {self.__store}, {self.__cost}р.'
 
-    def __add__(self, other):
+    def __add__(self, other) -> float:
         return self.__cost + other.__cost
 
 
