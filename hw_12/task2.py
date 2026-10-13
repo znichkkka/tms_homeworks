@@ -1,6 +1,3 @@
-from typing import Self
-
-
 class Bus:
     def __init__(
         self,
@@ -32,7 +29,7 @@ class Bus:
                         self.surnames.remove(current_surname)
                     break
 
-    def __isub__(self, other: str) -> Self:
+    def __isub__(self, other: str) -> 'Bus':
         self.drop_off_passenger(other)
         return self
 
@@ -48,7 +45,7 @@ class Bus:
                         self.surnames.append(current_surname)
                         break
 
-    def __iadd__(self, other: str) -> Self:
+    def __iadd__(self, other: str) -> 'Bus':
         self.pick_up_passenger(other)
         return self
 
@@ -70,6 +67,9 @@ class Bus:
             print('Скорость не может быть ниже ноля.')
         return self.speed
 
+    def __contains__(self, item: str) -> bool:
+        return item in self.surnames
+
 
 first_bus: Bus = Bus(15, 140)
 second_bus: Bus = Bus(20, 120)
@@ -85,3 +85,5 @@ print(first_bus)
 print(first_bus.is_free_seat)
 
 print(second_bus)
+
+print('Ivanova' in first_bus.surnames)
