@@ -1,4 +1,5 @@
 from collections.abc import Callable
+from copy import copy
 
 
 class Product:
@@ -20,7 +21,7 @@ class Product:
         return self.__cost
 
     @cost.setter
-    def cost(self, value: float):
+    def cost(self, value: float) -> None:
         if value > 0:
             self.__cost = value
         else:
@@ -38,8 +39,8 @@ class Warehouse:
         self.__list_of_products = list(products)
 
     @property
-    def list_of_products(self):
-        return self.__list_of_products
+    def list_of_products(self) -> list[Product]:
+        return copy(self.__list_of_products)
 
     def __getitem__(self, i: int) -> None:
         if i >= len(self.__list_of_products) or i < 0:
